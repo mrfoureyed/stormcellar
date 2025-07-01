@@ -15,6 +15,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
+      id_token: write
       contents: read
       packages: write
 
@@ -49,17 +50,19 @@ jobs:
           type=raw,value=latest,enable={{is_default_branch}}
 
     - name: Build and push Docker image
+      id: build
       uses: docker/build-push-action@v5
       with:
         context: .
         platforms: linux/amd64,linux/arm64
-        push: true
+        push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
     - name: Generate artifact attestation
+      if: ${{ github.event_name != 'pull_request' }}
       uses: actions/attest-build-provenance@v1
       with:
         subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
