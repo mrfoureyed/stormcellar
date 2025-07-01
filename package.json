@@ -1,0 +1,20 @@
+{
+  "name": "stormcellar",
+  "version": "0.1.0-alpha",
+  "description": "Weather data fetcher that posts to MQTT",
+  "main": "stormcellar.js",
+  "scripts": {
+    "start": "node stormcellar.js",
+    "dev": "node stormcellar.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "consola": "^3.4.2",
+    "mqtt": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Mr.FourEyed",
+  "license": "MIT"
+}
