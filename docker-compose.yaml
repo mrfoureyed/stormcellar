@@ -1,12 +1,12 @@
 services:
   stormcellar:
-    image: stormcellar
+    image: ghcr.io/mrfoureyed/stormcellar:latest
     container_name: stormcellar
     environment:
-      - OPENWEATHER_API_KEY=7374d2eb287d748d75910813c8cfbdf3
+      - OPENWEATHER_API_KEY=null
       - LAT=-40.7484
       - LON=-73.9967
-      - MQTT_BROKER=10.10.10.10
+      - MQTT_BROKER=localhost
       - MQTT_PORT=1883
       - MQTT_TOPIC=weather/data
       - TZ=America/New_York

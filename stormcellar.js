@@ -133,7 +133,7 @@ function publishWeatherId(weatherId) {
   
   const payload = JSON.stringify(message);
   
-  mqttClient.publish(config.mqttTopic, payload, { retain: true } (err) => {
+  mqttClient.publish(config.mqttTopic, payload, { retain: true }, (err) => {
     if (err) {
       consola.error('Failed to publish MQTT message:', err);
     } else {
